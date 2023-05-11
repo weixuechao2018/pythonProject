@@ -82,7 +82,12 @@ def gray_check2(img, threshold = 15):
     出参：
     bool值
     """
-    target_size = (100, 100)
+    sp = img.shape
+    width = sp[0]  # height(rows) of image
+    height = sp[1]  # width(colums) of image
+
+    # target_size = (int(height/20), int(width/20))
+    target_size = (int(width / 20), int(height / 20))
     img = cv2.resize(img, dsize=target_size, interpolation=cv2.INTER_AREA)
 
     [aisle_b, aisle_g, aisle_r] = cv2.split(img)
@@ -193,8 +198,8 @@ def folder_image_check_variance(path ,suffix, type):
 
         current_time_start = int(time.time())
         # if gray_check(img) == True:
-        # if gray_check2(img) == True:
-        if gray_check3(img) == True:
+        if gray_check2(img) == True:
+        # if gray_check3(img) == True:
         # if gray_check4(img) == True:
         # if gray_check5(img) == True:
             count_gray += 1
@@ -210,14 +215,16 @@ if __name__ == '__main__':
     # imgs = cv2.imread("/home/weixuechao/Downloads/15_1/1235.jpg")
     # imgs = cv2.imread("/home/weixuechao/Downloads/15_1/32848588716562.png")
     # imgs = cv2.imread("/home/weixuechao/Downloads/15_1/15164467154964.png")
-    imgs = cv2.imread("/home/weixuechao/Downloads/DCD-55524/dump_20230505100521_15_1/0001.jpg")
+    imgs = cv2.imread("/home/weixuechao/Downloads/15_1/0001.jpg")
     # image_show_gray(imgs)
     # gray_check(imgs)
     gray_check2(imgs)
     gray_check3(imgs)
     gray_check5(imgs)
 
-    # folder_image_check_variance("/home/weixuechao/Downloads/1", "png", 1)
+    folder_image_path = "/home/weixuechao/Downloads/jidu-img"
+    folder_image_check_variance(folder_image_path, "jpg", 1)
+    # folder_image_check_variance(folder_image_path, "png", 1)
     # folder_image_check_variance("/home/weixuechao/Downloads/11", "uyvy", 2)
 
 

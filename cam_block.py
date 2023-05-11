@@ -88,7 +88,7 @@ def judging_camera_block(img, cam_type):
 
 
 if __name__ == '__main__':
-    image_path = '/home/weixuechao/Downloads/DCD-55524/dump_20230505100521_15_1/0001.jpg'
+    image_path = '/home/weixuechao/Downloads/15_1/0001.jpg'
     img = cv2.imread(image_path)
     result = judging_camera_block(img, 'oms_rgb')
     print(result)
